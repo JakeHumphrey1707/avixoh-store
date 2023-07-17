@@ -14,14 +14,14 @@ const Navbar = async () => {
     <div className="border-b">
       <Container>
         <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center">
-          <Link href="/" className="ml-4 flex lg:ml-0 gap-x-1">
-            <p className="">
+          <Link href="/" className="ml-4 hidden md:flex lg:ml-0 gap-x-1">
+            <div className="">
               <Image
                 src={logo}
                 alt="logo failed to load"
                 width={120}
               />
-            </p>
+            </div>
           </Link>
           <MainNav data={categories} />
           <NavbarActions />

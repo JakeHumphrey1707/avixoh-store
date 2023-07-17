@@ -9,6 +9,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import Link from "next/link";
+import Image from "next/image";
+import logo from "@/assets/protoypelogo.png";
 
 export const revalidate = 0;
 
@@ -17,7 +20,18 @@ const HomePage = async () => {
   const billboard = await getBillboard("c047ea69-e8bf-4c1e-a2a1-0024f5846db7");
   return ( 
     <Container>
-      <div className="space-y-10 pb-10">
+      <div className="pb-4">
+        <div className="flex items-center justify-center pt-4">
+          <Link href="/" className="ml-4 md:hidden flex lg:ml-0 gap-x-1">
+            <div className="">
+              <Image
+                src={logo}
+                alt="logo failed to load"
+                width={240}
+              />
+            </div>
+          </Link>
+        </div>
         <Billboard data={billboard} />
         <div className="flex items-center justify-center px-4 sm:px-6 lg:px-8">
           <Accordion type="single" collapsible className="w-full">
