@@ -8,6 +8,9 @@ import Filter from "./components/filter";
 import NoResults from "@/components/ui/no-results";
 import ProductCard from "@/components/ui/product-card";
 import MobileFilters from "./components/mobile-filters";
+import Link from "next/link";
+import Image from "next/image";
+import logo from "@/assets/protoypelogo.png";
 
 
 export const revalidate = 0;
@@ -38,6 +41,17 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   return ( 
     <div className="bg-white">
       <Container>
+        <div className="flex items-center justify-center pt-4">
+          <Link href="/" className="ml-4 md:hidden flex lg:ml-0 gap-x-1">
+            <div className="">
+              <Image
+                src={logo}
+                alt="logo failed to load"
+                width={240}
+              />
+            </div>
+          </Link>
+        </div>
         <Billboard 
           data={category.billboard}
         />

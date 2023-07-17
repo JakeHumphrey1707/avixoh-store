@@ -11,7 +11,7 @@ const Footer = () => {
           <p className="group cursor-pointer">
             Contact, Product Care FAQ, Shipping Information:
             <span className="group-hover:text-blue-500">
-            &nbsp;See top of page.
+            &nbsp;See home page.
             </span>
           </p>
         </div>
