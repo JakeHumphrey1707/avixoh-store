@@ -33,7 +33,7 @@ const HomePage = async () => {
           </Link>
         </div>
         <Billboard data={billboard} />
-        <div className="flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-center px-4 pb-4 sm:px-6 lg:px-8">
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger>About Us</AccordionTrigger>
