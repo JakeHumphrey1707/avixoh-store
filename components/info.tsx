@@ -38,6 +38,14 @@ const Info: React.FC<InfoPros> = ({
             {data?.weight?.name}
           </div>
         </div>
+        <div className="flex items-center gap-x-4">
+          <h3 className="font-semibold text-black">
+            Colour
+          </h3>
+          <div>
+            {data?.colour?.name}
+          </div>
+        </div>
       </div>
       <div className="mt-10 flex items-center gap-x-3">
         <Button className="flex items-center gap-x-2">
