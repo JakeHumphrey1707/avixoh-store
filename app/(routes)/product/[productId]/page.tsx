@@ -19,7 +19,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({
   const product = await getProduct(params.productId);
   const suggestedProducts = await getProducts({ 
     categoryId: product.category.id,
-    colourId: product.colour.id,
+    weightId: product?.weight?.id
   });
 
   if (!product) {
