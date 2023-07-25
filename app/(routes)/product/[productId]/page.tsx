@@ -1,3 +1,4 @@
+import React from "react";
 import getProduct from "@/actions/get-product";
 import getProducts from "@/actions/get-products";
 import Gallery from "@/components/gallery";
@@ -10,23 +11,21 @@ export const revalidate = 0;
 interface ProductPageProps {
   params: {
     productId: string;
-  }
+  };
 }
 
-const ProductPage: React.FC<ProductPageProps> = async ({ 
-  params
- }) => {
+const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   const product = await getProduct(params.productId);
-  const suggestedProducts = await getProducts({ 
+  const suggestedProducts = await getProducts({
     categoryId: product.category.id,
-    weightId: product?.weight?.id
+    weightId: product?.weight?.id,
   });
 
   if (!product) {
     return null;
   }
-  
-  return ( 
+
+  return (
     <div className="bg-white">
       <Container>
         <div className="px-4 py-10 sm:px-6 lg:px-8">
@@ -34,18 +33,19 @@ const ProductPage: React.FC<ProductPageProps> = async ({
             <Gallery images={product.images} />
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
               <Info data={product} />
-              
-              <div className="pt-8">    
-              {product.description}
+
+              {/* Use CSS to preserve line breaks in the product description */}
+              <div className="pt-8" style={{ whiteSpace: "pre-wrap" }}>
+                {product.description}
               </div>
             </div>
           </div>
-          <hr className="my-10"/>
+          <hr className="my-10" />
           <ProductList title="Other Colours" items={suggestedProducts} />
         </div>
       </Container>
     </div>
   );
-}
- 
+};
+
 export default ProductPage;
