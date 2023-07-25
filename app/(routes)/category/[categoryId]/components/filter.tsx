@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 
 interface FilterProps {
-  data: (Weight | Brand| Colour)[];
+  data: (Weight | Brand | Colour)[];
   name: string;
   valueKey: string;
 }

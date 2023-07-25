@@ -18,7 +18,8 @@ const ProductPage: React.FC<ProductPageProps> = async ({
  }) => {
   const product = await getProduct(params.productId);
   const suggestedProducts = await getProducts({ 
-    categoryId: product?.category?.id
+    categoryId: product.category.id,
+    colourId: product.colour.id,
   });
 
   if (!product) {
@@ -40,7 +41,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({
             </div>
           </div>
           <hr className="my-10"/>
-          <ProductList title="Related Items" items={suggestedProducts} />
+          <ProductList title="Other Colours" items={suggestedProducts} />
         </div>
       </Container>
     </div>
