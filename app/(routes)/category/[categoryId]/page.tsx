@@ -11,6 +11,7 @@ import MobileFilters from "./components/mobile-filters";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/protoypelogo.png";
+import getColours from "@/actions/get-colours";
 
 
 export const revalidate = 0;
@@ -22,6 +23,7 @@ interface CategoryPageProps {
   searchParams: {
     weightId: string,
     brandId: string,
+    colourId: string,
   }
 }
 
@@ -33,41 +35,37 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
     categoryId: params.categoryId,
     weightId: searchParams.weightId,
     brandId: searchParams.brandId,
+    colourId: searchParams.colourId
   });
   const weights = await getWeights();
   const brands = await getBrands();
+  const colours = await getColours();
   const category = await getCategory(params.categoryId);
 
   return ( 
     <div className="bg-white">
       <Container>
-        <div className="flex items-center justify-center pt-4">
-          <Link href="/" className="ml-4 md:hidden flex lg:ml-0 gap-x-1">
-            <div className="">
-              <Image
-                src={logo}
-                alt="logo failed to load"
-                width={240}
-              />
-            </div>
-          </Link>
-        </div>
         <Billboard 
           data={category.billboard}
         />
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-            <MobileFilters weights={weights} brands={brands} />
+            <MobileFilters weights={weights} brands={brands} colours={colours} />
             <div className="hidden lg:block">
               <Filter 
                 valueKey="weightId"
-                name="Filter by"
+                name="Weights"
                 data={weights}
               />
               <Filter 
                 valueKey="brandId"
-                name="Or by"
+                name="Brands"
                 data={brands}
+              />
+              <Filter 
+                valueKey="colourId"
+                name="Colours"
+                data={colours}
               />
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">

@@ -5,6 +5,7 @@ import Image from "next/image";
 import MainNav from "@/components/mainnav";
 import getCategories from "@/actions/get-categories";
 import NavbarActions from "./navbar-actions";
+import MobileMenu from "@/components/mobile-menu";
 
 export const revalidate = 0;
 
@@ -13,17 +14,20 @@ const Navbar = async () => {
   return ( 
     <div className="border-b">
       <Container>
-        <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center">
-          <Link href="/" className="ml-4 hidden md:flex lg:ml-0 gap-x-1">
+        <div className="px-4 sm:px-6 lg:px-8 flex h-16 items-center">
+        <MobileMenu data={categories} />
+          <Link href="/" className="gap-x-1">
             <div className="">
-              <Image
+              <Image className=""
                 src={logo}
                 alt="logo failed to load"
                 width={120}
               />
             </div>
           </Link>
-          <MainNav data={categories} />
+          <MainNav data={categories} 
+          />
+          
           <NavbarActions />
         </div>
       </Container>

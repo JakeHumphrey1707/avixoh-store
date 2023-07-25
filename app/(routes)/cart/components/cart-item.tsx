@@ -44,11 +44,11 @@ const CartItem: React.FC<CartItemProps> = ({
           <div className="mt-1 flex text-sm">
             <p className="text-gray-500">{data.weight.name}</p>
             <p className="text-gray-500 ml-4 border-l border-gray-200 pl-4">{data.brand.name}</p>
+            <p className="text-gray-500 ml-4 border-l border-gray-200 pl-4">{data.colour.name}</p>
           </div>
           <Currency value={data.price} />
         </div>
-        <p className="text-sm text-pink-700">Quantity? cart-item.tsx</p>
-        <p></p>
+        <p className="text-pink-700 font-bold">Adjust quantity at checkout</p>
       </div>
     </li>
    );

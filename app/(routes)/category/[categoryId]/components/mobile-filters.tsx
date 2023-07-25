@@ -2,7 +2,7 @@
 
 import Button from "@/components/ui/button";
 import IconButton from "@/components/ui/icon-button";
-import { Brand, Weight } from "@/types";
+import { Brand, Weight, Colour } from "@/types";
 import { Dialog } from "@headlessui/react";
 import { Plus, X } from "lucide-react";
 import { useState } from "react";
@@ -11,11 +11,13 @@ import Filter from "./filter";
 interface MobileFiltersProps {
   weights: Weight[];
   brands: Brand[];
+  colours: Colour[];
 }
 
 const MobileFilters: React.FC<MobileFiltersProps> = ({
   weights,
-  brands
+  brands,
+  colours
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -41,13 +43,18 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({
             <div className="p-4">
               <Filter 
                 valueKey="weightId"
-                name="Filter by"
+                name="Weights"
                 data={weights}
               />
               <Filter 
                 valueKey="brandId"
-                name="Or by"
+                name="Brands"
                 data={brands}
+              />
+              <Filter 
+                valueKey="brandId"
+                name="Colours"
+                data={colours}
               />
             </div>
           </Dialog.Panel>

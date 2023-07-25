@@ -2,12 +2,12 @@
 
 import Button from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Brand, Weight } from "@/types";
+import { Brand, Weight, Colour } from "@/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 
 interface FilterProps {
-  data: (Weight | Brand)[];
+  data: (Weight | Brand| Colour)[];
   name: string;
   valueKey: string;
 }

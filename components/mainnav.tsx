@@ -13,18 +13,19 @@ interface MainNavProps {
 const MainNav: React.FC<MainNavProps> = ({
   data
 }) => {
+  // Sort categories based on the createdAt date in ascending order
+  const sortedData = data.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+
   const pathname = usePathname();
 
-  const routes = data.map((route) => ({
+  const routes = sortedData.map((route) => ({
     href: `/category/${route.id}`,
     label: route.name,
     active: pathname === `/category/${route.id}`,
   }));
 
   return (
-    <nav
-      className="mx-6 flex items-center space-x-4 lg:space-x-6"
-    >
+    <nav className="mx-6 hidden sm:flex items-center space-x-4 lg:space-x-6">
       {routes.map((route) => (
         <Link
           key={route.href}
@@ -35,10 +36,10 @@ const MainNav: React.FC<MainNavProps> = ({
           )}
         >
           {route.label}
-      </Link>
+        </Link>
       ))}
     </nav>
-  )
+  );
 };
 
 export default MainNav;
