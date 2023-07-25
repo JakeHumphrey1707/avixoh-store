@@ -52,7 +52,7 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({
                 data={brands}
               />
               <Filter 
-                valueKey="brandId"
+                valueKey="colourId"
                 name="Colours"
                 data={colours}
               />
