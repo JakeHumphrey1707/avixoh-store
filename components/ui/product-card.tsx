@@ -71,9 +71,7 @@ const ProductCard: React.FC<ProductCard> = ({
         </p>
       </div>
       {/* price */}
-      <div className="flex items-center justify-start md:text-lg sm:text-base text-sm">
-        <Currency value={data?.price} />
-      </div>
+      
     </div>
    );
 }
