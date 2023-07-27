@@ -119,9 +119,9 @@ const HomePage = async () => {
 
   return ( 
     <Container>
-      <div className="absolute md:text-xl">
-          <TickerTape texts={tickerTapeTexts} />
-      </div>
+     <div className="absolute md:text-xl">
+        <TickerTape texts={tickerTapeTexts} />
+     </div>
       <div className="pb-4 sm:pt-0 pt-2">
         <Billboard data={billboard} />
         <div className="flex items-center justify-center px-4 pb-4 sm:px-6 lg:px-8 lg:text-xl">

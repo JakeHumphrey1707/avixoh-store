@@ -93,7 +93,7 @@
 
 @keyframes ticker-animation {
   0% {
-    transform: translateX(0);
+    transform: translateX(-2%);
   }
   100% {
     transform: translateX(-100%);
@@ -103,5 +103,5 @@
 /* Styles for the individual ticker tape items */
 .ticker-tape-item {
   white-space: nowrap;
-  margin-right: 2rem; /* Add spacing between items as needed */
+  margin-right: 3rem; /* Add spacing between items as needed */
 }
