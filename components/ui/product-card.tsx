@@ -60,7 +60,7 @@ const ProductCard: React.FC<ProductCard> = ({
       </div>
       {/* desc */}
       <div>
-        <p className="font-semibold md:text-lg sm:text-base text-sm">
+        <p className="md:text-lg sm:text-base text-sm">
           {data.name}
         </p>
         <p className="font-semibold md:text-lg sm:text-base text-sm">
