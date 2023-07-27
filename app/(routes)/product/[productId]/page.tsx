@@ -16,14 +16,26 @@ interface ProductPageProps {
 
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   const product = await getProduct(params.productId);
+  
+  const isYarnCategory = product.category.name.toLowerCase() === "yarn";
+
+  // Fetch suggested products with optional parameters based on the category
   const suggestedProducts = await getProducts({
     categoryId: product.category.id,
-    weightId: product?.weight?.id,
+    ...(isYarnCategory && {
+      brandId: product.brand.id,
+      weightId: product?.weight?.id,
+    }),
   });
 
   if (!product) {
     return null;
   }
+
+  const title =
+    product.category.name.toLowerCase() === "yarn"
+      ? "Other Colours"
+      : "Related Products"
 
   return (
     <div className="bg-white">
@@ -34,14 +46,14 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
               <Info data={product} />
 
-              {/* Use CSS to preserve line breaks in the product description */}
+              {/* Used CSS to preserve line breaks in the product description */}
               <div className="pt-8" style={{ whiteSpace: "pre-wrap" }}>
                 {product.description}
               </div>
             </div>
           </div>
           <hr className="my-10" />
-          <ProductList title="Other Colours" items={suggestedProducts} />
+          <ProductList title={title} items={suggestedProducts} />
         </div>
       </Container>
     </div>
