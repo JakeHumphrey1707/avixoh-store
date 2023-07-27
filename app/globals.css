@@ -76,3 +76,32 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Add this CSS to your global styles or a dedicated CSS file */
+
+/* Styles for the ticker tape container */
+.ticker-tape-container {
+  position: absolute;
+  height: 1.5rem; /* Adjust the height to fit your design */
+}
+
+/* Styles for the ticker tape animation */
+.ticker-tape {
+  display: flex;
+  animation: ticker-animation 1000s linear infinite; /* Adjust the animation duration as needed */
+}
+
+@keyframes ticker-animation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Styles for the individual ticker tape items */
+.ticker-tape-item {
+  white-space: nowrap;
+  margin-right: 2rem; /* Add spacing between items as needed */
+}

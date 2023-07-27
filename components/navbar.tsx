@@ -6,6 +6,7 @@ import MainNav from "@/components/mainnav";
 import getCategories from "@/actions/get-categories";
 import NavbarActions from "./navbar-actions";
 import MobileMenu from "@/components/mobile-menu";
+import TickerTape from "@/components/tickertape";
 
 export const revalidate = 0;
 
