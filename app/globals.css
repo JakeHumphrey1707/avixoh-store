@@ -80,23 +80,29 @@
 /* Add this CSS to your global styles or a dedicated CSS file */
 
 /* Styles for the ticker tape container */
+/* Add this CSS to your global styles or a dedicated CSS file */
+
+/* Styles for the ticker tape container */
 .ticker-tape-container {
-  position: absolute;
+  position: relative;
   height: 1.5rem; /* Adjust the height to fit your design */
+  overflow: hidden;
+  /* Set a fixed width to prevent extending beyond the website's page */
+  width: 100%;
 }
 
 /* Styles for the ticker tape animation */
 .ticker-tape {
   display: flex;
-  animation: ticker-animation 1000s linear infinite; /* Adjust the animation duration as needed */
+  animation: ticker-animation 20s linear infinite;
 }
 
 @keyframes ticker-animation {
   0% {
-    transform: translateX(-2%);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(calc(-50% * 2)); /* Adjust the number of loops here */
   }
 }
 
@@ -105,3 +111,4 @@
   white-space: nowrap;
   margin-right: 3rem; /* Add spacing between items as needed */
 }
+

@@ -119,10 +119,12 @@ const HomePage = async () => {
 
   return ( 
     <Container>
-     <div className="absolute md:text-xl">
+      <div className="pt-2 px-3">
+        <div className="text-xl text-white bg-black py-1 pb-1 items-center flex justify-center rounded-md">
         <TickerTape texts={tickerTapeTexts} />
-     </div>
-      <div className="pb-4 sm:pt-0 pt-2">
+        </div>
+      </div>
+      <div className="pb-4">
         <Billboard data={billboard} />
         <div className="flex items-center justify-center px-4 pb-4 sm:px-6 lg:px-8 lg:text-xl">
           <Accordion type="single" collapsible className="w-full">

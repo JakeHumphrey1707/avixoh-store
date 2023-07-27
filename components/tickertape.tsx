@@ -13,6 +13,11 @@ const TickerTape: React.FC<TickerTapeProps> = ({ texts }) => {
             {text}
           </div>
         ))}
+        {texts.map((text, index) => (
+          <div key={`repeat-${index}`} className="ticker-tape-item">
+            {text}
+          </div>
+        ))}
       </div>
     </div>
   );
