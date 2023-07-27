@@ -16,7 +16,7 @@ interface ProductPageProps {
 
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   const product = await getProduct(params.productId);
-  
+
   const isYarnCategory = product.category.name.toLowerCase() === "yarn";
 
   // Fetch suggested products with optional parameters based on the category
@@ -34,7 +34,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
 
   const title =
     product.category.name.toLowerCase() === "yarn"
-      ? "Other Colours"
+      ? "Compare Colours"
       : "Related Products"
 
   return (
