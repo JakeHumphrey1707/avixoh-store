@@ -1,7 +1,5 @@
-import getBillboard from "@/actions/get-billboard";
 import React from "react";
 import getProducts from "@/actions/get-products";
-import Billboard from "@/components/billboard";
 import ProductList from "@/components/product-list";
 import Container from "@/components/ui/container";
 import {
@@ -11,12 +9,19 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import TickerTape from "@/components/tickertape";
+import equipment from "@/assets/equipment.png";
+import knitwear from "@/assets/knitwear.png";
+import patterns from "@/assets/patterns.png";
+import yarn from "@/assets/yarn.png";
+import Image from "next/image";
+import Link from "next/link";
+
+
 
 export const revalidate = 0;
 
 const HomePage = async () => {
   const products = await getProducts({ isFeatured: true });
-  const billboard = await getBillboard("70ed5d45-d3b8-4914-95a0-91ef40f79173");
 
   const tickerTapeTexts = [
     "Use code BULK3 for 10% off on orders with 3 or more items!",
@@ -125,7 +130,47 @@ const HomePage = async () => {
         </div>
       </div>
       <div className="pb-4">
-        <Billboard data={billboard} />
+      <div className="pt-2 px-3">
+        <div className="carousel scroll-py-96 rounded-3xl">
+          <div id="slide1" className="carousel-item relative w-full scroll-py-96">
+            <Link href="/category/f9528ac4-e7ef-4490-9ea3-bd076f88ac3f">
+            <Image src={yarn} className="w-full" alt="" />
+            </Link>
+            <div className="md:scale-100 scale-75 absolute flex justify-between transform -translate-y-1/2 md:left-5 -left-12 -right-12 md:right-5 top-1/2">
+              <a href="#slide4" className="btn btn-circle">❮</a> 
+              <a href="#slide2" className="btn btn-circle">❯</a> 
+            </div>
+          </div> 
+          <div id="slide2" className="carousel-item relative w-full scroll-py-96">
+            <Link href="/category/f12cf7a4-4fd1-4773-a98c-405990d38380">
+            <Image src={equipment} className="w-full" alt="" />
+            </Link>
+            <div className="md:scale-100 scale-75 absolute flex justify-between transform -translate-y-1/2 md:left-5 -left-12 -right-12 md:right-5 top-1/2">
+              <a href="#slide1" className="btn btn-circle">❮</a> 
+              <a href="#slide3" className="btn btn-circle">❯</a>
+            </div>
+          </div> 
+          <div id="slide3" className="carousel-item relative w-full scroll-py-96">
+            <Link href="/category/e7378272-4c3f-4a83-87e7-54d8d078033c">
+            <Image src={patterns} className="w-full" alt="" />
+            </Link>
+            <div className="md:scale-100 scale-75 absolute flex justify-between transform -translate-y-1/2 md:left-5 -left-12 -right-12 md:right-5 top-1/2">
+              <a href="#slide2" className="btn btn-circle">❮</a> 
+              <a href="#slide4" className="btn btn-circle">❯</a>
+            </div>
+          </div> 
+          <div id="slide4" className="carousel-item relative w-full scroll-py-96">
+            <Link href="/category/98cc462d-19bd-486e-a168-c05233b0d667">
+            <Image src={knitwear} className="w-full" alt="" />
+            </Link>
+            <div className="md:scale-100 scale-75 absolute flex justify-between transform -translate-y-1/2 md:left-5 -left-12 -right-12 md:right-5 top-1/2">
+              <a href="#slide3" className="btn btn-circle">❮</a> 
+              <a href="#slide1" className="btn btn-circle">❯</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
         <div className="flex items-center justify-center px-4 pb-4 sm:px-6 lg:px-8 lg:text-xl">
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">

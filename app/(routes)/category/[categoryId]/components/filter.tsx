@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Button from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Brand, Weight, Colour } from "@/types";
@@ -10,12 +11,14 @@ interface FilterProps {
   data: (Weight | Brand | Colour)[];
   name: string;
   valueKey: string;
+  category: string; // Add a category prop
 }
 
 const Filter: React.FC<FilterProps> = ({
   data,
   name,
   valueKey,
+  category, // Destructure the category prop
 }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -27,29 +30,41 @@ const Filter: React.FC<FilterProps> = ({
 
     const query = {
       ...current,
-      [valueKey]: id
+      [valueKey]: id,
     };
 
     if (current[valueKey] === id) {
       query[valueKey] = null;
-    };
+    }
 
-    const url = qs.stringifyUrl({
-      url: window.location.href,
-      query
-    }, { skipNull: true});
+    const url = qs.stringifyUrl(
+      {
+        url: window.location.href,
+        query,
+      },
+      { skipNull: true }
+    );
 
     router.push(url);
-  }
+  };
 
-  return ( 
+  // Filter the data based on category and sort alphabetically
+  const sortedData = data
+    .filter((filter) => {
+      if (category === "yarn") {
+        return !/^0+/.test(filter.name); // Exclude filters with leading zeros
+      } else {
+        return /^0+/.test(filter.name); // Include only filters with leading zeros
+      }
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  return (
     <div className="mb-8">
-      <h3 className="text-lg font-semibold">
-        {name}
-      </h3>
-      <hr className="my-4"/>
+      <h3 className="text-lg font-semibold">{name}</h3>
+      <hr className="my-4" />
       <div className="flex flex-wrap gap-2">
-        {data.map((filter) => (
+        {sortedData.map((filter) => (
           <div key={filter.id} className="flex items-center">
             <Button
               className={cn(
@@ -58,13 +73,13 @@ const Filter: React.FC<FilterProps> = ({
               )}
               onClick={() => onClick(filter.id)}
             >
-              {filter.name}
+               {filter.name.replace(/^0+/, '')}
             </Button>
           </div>
         ))}
       </div>
     </div>
-   );
-}
- 
+  );
+};
+
 export default Filter;

@@ -1,18 +1,15 @@
+import React from "react";
 import getBrands from "@/actions/get-brands";
 import getCategory from "@/actions/get-category";
 import getProducts from "@/actions/get-products";
 import getWeights from "@/actions/get-weights";
+import getColours from "@/actions/get-colours";
 import Billboard from "@/components/billboard";
 import Container from "@/components/ui/container";
 import Filter from "./components/filter";
 import NoResults from "@/components/ui/no-results";
 import ProductCard from "@/components/ui/product-card";
 import MobileFilters from "./components/mobile-filters";
-import Link from "next/link";
-import Image from "next/image";
-import logo from "@/assets/protoypelogo.png";
-import getColours from "@/actions/get-colours";
-
 
 export const revalidate = 0;
 
@@ -42,6 +39,14 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   const colours = await getColours();
   const category = await getCategory(params.categoryId);
 
+  // Determine the filter titles based on the category name
+  const categoryName = category.name.toLowerCase();
+  const isYarnCategory = categoryName.includes("yarn");
+
+  const filterTitles = isYarnCategory
+    ? { title1: "Weights", title2: "Brands", title3: "Colours" }
+    : { title1: "Bodyshapes", title2: "Accessories", title3: "Genders" };
+
   return ( 
     <div className="bg-white">
       <Container>
@@ -50,22 +55,25 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
         />
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-            <MobileFilters weights={weights} brands={brands} colours={colours} />
+            <MobileFilters weights={weights} brands={brands} colours={colours} categoryName={categoryName} />
             <div className="hidden lg:block">
               <Filter 
                 valueKey="weightId"
-                name="Weights"
+                name={filterTitles.title1}
                 data={weights}
+                category={categoryName}
               />
               <Filter 
                 valueKey="brandId"
-                name="Brands"
+                name={filterTitles.title2}
                 data={brands}
+                category={categoryName}
               />
               <Filter 
                 valueKey="colourId"
-                name="Colours"
+                name={filterTitles.title3}
                 data={colours}
+                category={categoryName}
               />
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
