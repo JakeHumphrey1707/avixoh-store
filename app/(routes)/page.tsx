@@ -125,7 +125,7 @@ const HomePage = async () => {
   return ( 
     <Container>
       <div className="pt-2 px-3">
-        <div className="text-xl text-white bg-black py-1 pb-1 items-center flex justify-center rounded-md">
+        <div className="text-xl text-white bg-[#007FFF] py-1 pb-1 items-center flex justify-center rounded-md">
         <TickerTape texts={tickerTapeTexts} />
         </div>
       </div>
@@ -134,7 +134,7 @@ const HomePage = async () => {
         <div className="carousel scroll-py-96 rounded-3xl">
           <div id="slide1" className="carousel-item relative w-full scroll-py-96">
             <Link href="/category/f9528ac4-e7ef-4490-9ea3-bd076f88ac3f">
-            <Image src={yarn} className="w-full" alt="" />
+            <Image src={yarn} className="" alt="" />
             </Link>
             <div className="md:scale-100 scale-75 absolute flex justify-between transform -translate-y-1/2 md:left-5 -left-12 -right-12 md:right-5 top-1/2">
               <a href="#slide4" className="btn btn-circle">❮</a> 
@@ -143,7 +143,7 @@ const HomePage = async () => {
           </div> 
           <div id="slide2" className="carousel-item relative w-full scroll-py-96">
             <Link href="/category/f12cf7a4-4fd1-4773-a98c-405990d38380">
-            <Image src={equipment} className="w-full" alt="" />
+            <Image src={equipment} className="" alt="" />
             </Link>
             <div className="md:scale-100 scale-75 absolute flex justify-between transform -translate-y-1/2 md:left-5 -left-12 -right-12 md:right-5 top-1/2">
               <a href="#slide1" className="btn btn-circle">❮</a> 
@@ -152,7 +152,7 @@ const HomePage = async () => {
           </div> 
           <div id="slide3" className="carousel-item relative w-full scroll-py-96">
             <Link href="/category/e7378272-4c3f-4a83-87e7-54d8d078033c">
-            <Image src={patterns} className="w-full" alt="" />
+            <Image src={patterns} className="" alt="" />
             </Link>
             <div className="md:scale-100 scale-75 absolute flex justify-between transform -translate-y-1/2 md:left-5 -left-12 -right-12 md:right-5 top-1/2">
               <a href="#slide2" className="btn btn-circle">❮</a> 
@@ -161,7 +161,7 @@ const HomePage = async () => {
           </div> 
           <div id="slide4" className="carousel-item relative w-full scroll-py-96">
             <Link href="/category/98cc462d-19bd-486e-a168-c05233b0d667">
-            <Image src={knitwear} className="w-full" alt="" />
+            <Image src={knitwear} className="" alt="" />
             </Link>
             <div className="md:scale-100 scale-75 absolute flex justify-between transform -translate-y-1/2 md:left-5 -left-12 -right-12 md:right-5 top-1/2">
               <a href="#slide3" className="btn btn-circle">❮</a> 
